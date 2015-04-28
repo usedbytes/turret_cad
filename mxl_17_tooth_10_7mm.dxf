@@ -72,6 +72,10 @@ ANSI_1252
 $INSUNITS
  70
 4
+  9
+$LTSCALE
+ 40
+1
   0
 ENDSEC
   0
@@ -295,7 +299,7 @@ AcDbLayerTableRecord
   6
 Continuous
 370
-25
+5
 390
 F
   0

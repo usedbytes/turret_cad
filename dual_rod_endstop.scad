@@ -10,7 +10,7 @@ $fn = 50;
 /* Overall depth of the part */
 depth = 8;
 /* Outer diameter of the pulley */
-pitch_dia = 10.7 / 2;
+pitch_dia = 10.7;
 
 module mxl_17tooth() {
 	color([0.2, 0.2, 0.2])
@@ -19,7 +19,7 @@ module mxl_17tooth() {
 
 module axle() {
 	color([0.7, 0.7, 0.7])
-	cylinder(h = 9, r = 0.75);
+	cylinder(h = 9, r = 0.9);
 
 }
 
@@ -29,7 +29,7 @@ module part() {
 			import("dual_rod_endstop_expanded.dxf");
 		/* Bore a hole for the axle. Trapped by the rods */
 		translate([0, -5, pitch_dia / 2]) rotate([-90, 0, 0])
-			cylinder(h = 19, r = 0.75);
+			cylinder(h = 25, r = 0.9);
 	}
 }
 
