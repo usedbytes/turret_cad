@@ -7,23 +7,13 @@
  * Creative Commons BY-NC-SA
  */
 
+include <turret_common.scad>
+
 $fn = 50;
 height = 10;
 
-module bolt(length = 10, dia = 3) {
-	radius = (dia / 2) * 0.9;
-
-	color([0.7, 0.7, 0.7]) {
-		translate([0, 0, length]) intersection() {
-			sphere(r = radius + 0.9, center = true);
-			translate([0, 0, radius / 2])
-				cube([5, 5, radius], center = true);
-		}
-		cylinder(r = radius, h = length);
-	}
-}
-
-module part() {
+/* Part (for printing) */
+module dual_rod_slider_part() {
 	difference() {
 		linear_extrude(height = 10)
 			import(convexity=10, "dual_rod_slider.dxf");
@@ -32,10 +22,12 @@ module part() {
 	}
 }
 
-/* Bolt (for decoration)
-translate([-5, 7.5, 5]) rotate([0, 90, 0])
-	bolt(7);
-*/
+/* Visual representation for modelling */
+module dual_rod_slider_render() {
+	/* Bolt (for decoration) */
+	translate([-5, 7.5, 5]) rotate([0, 90, 0])
+		bolt(7);
+	dual_rod_slider_part();
+}
 
-/* Part (for printing) */
-part();
+dual_rod_slider_part();
