@@ -13,9 +13,8 @@ $fn = 50;
 depth = 8;
 
 module dual_rod_endstop_axle() {
-	color([0.7, 0.7, 0.7])
-	cylinder(h = 9, r = 0.9);
-
+	color(steel_grey)
+		cylinder(h = 9, r = 0.9);
 }
 
 /* Part (for printing) */

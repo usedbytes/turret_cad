@@ -15,8 +15,8 @@ height = 10;
 /* Part (for printing) */
 module dual_rod_slider_part() {
 	difference() {
-		linear_extrude(height = 10)
-			import(convexity=10, "dual_rod_slider.dxf");
+		render(convexity = 10) linear_extrude(height = 10)
+			import("dual_rod_slider.dxf");
 		translate([-4, 7.5, 5]) rotate([0, 90, 0])
 			cylinder(r = 1.4, h = 8);
 	}
