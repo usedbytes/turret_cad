@@ -14,6 +14,11 @@ module mxl_17tooth() {
 	linear_extrude(height = 5) import("mxl_17_tooth_10_7mm.dxf");
 }
 
+module mxl_31tooth() {
+	color([0.2, 0.2, 0.2])
+	linear_extrude(height = 5) import("mxl_31_tooth_19_8mm.dxf");
+}
+
 module bolt(length = 10, dia = 3) {
 	radius = (dia / 2) * 0.9;
 
@@ -25,4 +30,8 @@ module bolt(length = 10, dia = 3) {
 		}
 		cylinder(r = radius, h = length);
 	}
+}
+
+module axle(length = 10) {
+	color(steel_grey) cylinder(r = 1, h = length, center = true);
 }
