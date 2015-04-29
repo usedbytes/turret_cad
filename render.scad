@@ -11,12 +11,16 @@ endstop_depth = 8;
 use <wing_mount.scad>
 slider_depth = 10;
 
+use <dual_rod_servo_mount.scad>
+inside_w = 20.82;
+outside_w = 27.82;
+
 $fn = 50;
 
-rod_length = 100;
+rod_length = 150;
 rod_spacing = 15;
 /* Include $t for animation */
-slide_pos = 20 * $t;
+slide_pos = 40 * $t;
 pipe_od = 28;
 pipe_id = 25;
 
@@ -53,12 +57,6 @@ module pipe(length = 100) {
 }
 
 
-/* Two steel rods */
-translate([0, 0, 0])
-	rod(rod_length);
-translate([0, 0, rod_spacing])
-	rod(rod_length);
-
 /* A wing mount, "slide_pos" from the end of travel */
 translate([0, (rod_length / 2) - endstop_depth - slide_pos, 0])
 rotate([90, 0, 0])
@@ -73,7 +71,20 @@ rotate([-90, 0, 0])
 translate([0, (rod_length / 2) - endstop_depth - slide_pos, rod_spacing / 2])
 	pod();
 
-/* Slotted pipe housing */
-%translate([0, 0.1, rod_spacing / 2])
-	pipe();
+/* Servo */
+translate([0, 0, -5]) rotate([0, 0, 90])
+	dual_rod_servo_mount_render();
 
+/* Steel rods */
+translate([0, (rod_length / 4) + (inside_w / 4), 0])
+	rod((rod_length / 2) - (inside_w / 2));
+translate([0, -((rod_length / 4) + (inside_w / 4)), 0])
+	rod((rod_length / 2) - (inside_w / 2));
+translate([0, 0, rod_spacing])
+	rod(rod_length);
+
+/* Slotted pipe housing */
+%translate([0, (rod_length / 4) + (outside_w / 4), rod_spacing / 2])
+	pipe((rod_length / 2) - (outside_w / 2));
+%translate([0, -((rod_length / 4) + (outside_w / 4)), rod_spacing / 2])
+	pipe((rod_length / 2) - (outside_w / 2));
